@@ -67,22 +67,28 @@ def chat_with_gemini(message, history):
         return f"Gemini error: {e}"
 
 
-# Create the Gradio chatbot
 
 app = gr.ChatInterface(
     fn=chat_with_gemini,
     title="My AI Chatbot",
     description="Chat with Gemini AI",
     submit_btn="Send",
+    retry_btn=None,
+    undo_btn=None,
+    clear_btn="Clear chat",
     textbox=gr.Textbox(
-        placeholder="Type your message and press Enter...",
+        placeholder="Type your message here...",
         lines=2
     )
 )
 
-
-# Start the web server on Render's assigned port
 app.launch(
     server_name="0.0.0.0",
     server_port=int(os.environ.get("PORT", "10000"))
 )
+# Create the Gradio chatbot
+
+
+
+
+# Start the web server on Render's assigned port
